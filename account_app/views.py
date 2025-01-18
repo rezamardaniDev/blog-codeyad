@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 
 # Create your views here.
-def signup_page(request):
+def user_login(request):
+    if request.user.is_authenticated:
+        return redirect('/')
+    
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password') 
@@ -11,7 +14,8 @@ def signup_page(request):
         if user is None:
             return redirect('/account/signup')
         
-        return redirect('/account/register')
+        login(request, user)
+        return redirect('/')
     
     return render(request, 'account_app/signup.html', {})
 
