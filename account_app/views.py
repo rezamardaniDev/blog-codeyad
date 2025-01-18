@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 
 # Create your views here.
 def user_login(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated: # if user login
         return redirect('/')
     
     if request.method == 'POST':
