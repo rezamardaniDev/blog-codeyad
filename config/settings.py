@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     
     #my apps
     'home_app.apps.HomeAppConfig',
-    'account_app.apps.AccountAppConfig'
+    'account_app.apps.AccountAppConfig',
+    'blog_app.apps.BlogAppConfig'
 ]
 
 MIDDLEWARE = [
@@ -123,6 +124,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'assets')
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
