@@ -70,7 +70,7 @@ https://templatemo.com/tm-551-stand-blog
               </li>
               {% if request.user.is_authenticated%}
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Profile</a>
+                <a class="nav-link" href="{% url "account:logout" %}">LogOut</a>
               </li>
               {% else %}
               <li class="nav-item">
