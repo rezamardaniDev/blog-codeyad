@@ -104,6 +104,11 @@ https://templatemo.com/tm-551-stand-blog
               <ul class="post-info">
                 <li><a href="#">{{ article.author.username }}</a></li>
                 <li><a href="#">{{ article.created }}</a></li>
+                <br>
+                {% for cat in article.category.all %}
+                  <li><a href="#">{{ cat.title }}</a></li>
+                {% endfor %}
+                <br>
                 <li><a href="#">12 Comments</a></li>
               </ul>
             </div>
