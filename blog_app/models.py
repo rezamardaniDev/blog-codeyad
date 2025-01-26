@@ -8,7 +8,15 @@ class Category(models.Model):
     
     def __str__(self):
         return self.title
+
+
+class ArticleManager(models.Manager):
+    def counter(self):
+        return len(self.all())
     
+    def published(self):
+        return self.filter(is_published=True)
+
 
 class Article(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -19,6 +27,8 @@ class Article(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
+    
+    objects = ArticleManager()
     
     def save(self, *args, **kwargs):
         self.title = self.title.replace('*', '')
