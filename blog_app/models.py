@@ -20,6 +20,10 @@ class Article(models.Model):
     updated = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
     
+    def save(self, *args, **kwargs):
+        self.title = self.title.replace('*', '')
+        super(Article, self).save(args, kwargs)
+    
     def __str__(self):
         return self.title
     

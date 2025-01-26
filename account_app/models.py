@@ -8,6 +8,5 @@ class Profile(models.Model):
     melli_code = models.CharField(max_length=10)
     image = models.ImageField(upload_to="profiles/images")
     
-    
     def __str__(self):
         return f"{self.user.username} - {self.melli_code}" 
