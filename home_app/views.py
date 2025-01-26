@@ -3,6 +3,5 @@ from blog_app.models import Article
 # Create your views here.
 
 def home_page(request):
-    articles = Article.objects.filter(is_published=True).all()
-    print(Article.objects.published())
+    articles = Article.custome_manager.all()
     return render(request, 'home_app/index.html', context={'articles':articles})

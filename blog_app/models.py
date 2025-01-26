@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from .managers import *
+
 
 class Category(models.Model):
     title = models.CharField(max_length=255)
@@ -8,14 +10,6 @@ class Category(models.Model):
     
     def __str__(self):
         return self.title
-
-
-class ArticleManager(models.Manager):
-    def counter(self):
-        return len(self.all())
-    
-    def published(self):
-        return self.filter(is_published=True)
 
 
 class Article(models.Model):
@@ -28,7 +22,8 @@ class Article(models.Model):
     updated = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
     
-    objects = ArticleManager()
+    objects = models.Manager()
+    custome_manager = ArticleManager()
     
     def save(self, *args, **kwargs):
         self.title = self.title.replace('*', '')
