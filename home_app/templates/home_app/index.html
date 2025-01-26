@@ -72,6 +72,11 @@ https://templatemo.com/tm-551-stand-blog
               <li class="nav-item">
                 <a class="nav-link" href="{% url "account:logout" %}">LogOut</a>
               </li>
+              {% if request.user.profile.image %}
+              <li class="nav-item">
+                 <img width="40px" height="40px" style="border-radius:20px;" title={{ request.user.username}} src="{{ request.user.profile.image.url }}" >
+             </li>
+             {% endif %}
               {% else %}
               <li class="nav-item">
                 <a class="nav-link" style="color:gold;" href="{% url "account:login" %}">Login</a>
