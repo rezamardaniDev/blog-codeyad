@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from .managers import *
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -21,12 +22,16 @@ class Article(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
+    slug = models.SlugField(null=True, blank=True)
     
     objects = models.Manager()
     custome_manager = ArticleManager()
     
+    def get_url(self):
+        return reverse('blog:post-detail', args=[self.slug])
+    
     def save(self, *args, **kwargs):
-        self.title = self.title.replace('*', '')
+        self.slug = self.title.replace(' ', '-')
         super(Article, self).save(args, kwargs)
     
     def __str__(self):
