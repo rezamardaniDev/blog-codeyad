@@ -25,8 +25,14 @@ class Article(models.Model):
     is_published = models.BooleanField(default=True)
     slug = models.SlugField(null=True, blank=True)
     
+    # Managers
     objects = models.Manager()
     custome_manager = ArticleManager()
+    
+    class Meta:
+        ordering = ['-updated']
+        verbose_name = 'post'
+        verbose_name_plural = 'posts'
     
     def get_url(self):
         return reverse('blog:post-detail', args=[self.slug])
