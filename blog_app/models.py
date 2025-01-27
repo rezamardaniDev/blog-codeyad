@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from .managers import *
 from django.urls import reverse
+from django.utils.text import slugify
 
 
 class Category(models.Model):
@@ -31,7 +32,7 @@ class Article(models.Model):
         return reverse('blog:post-detail', args=[self.slug])
     
     def save(self, *args, **kwargs):
-        self.slug = self.title.replace(' ', '-')
+        self.slug = slugify(self.title)
         super(Article, self).save(args, kwargs)
     
     def __str__(self):
