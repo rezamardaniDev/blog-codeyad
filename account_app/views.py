@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 def user_login(request):
-    if request.user.is_authenticated: # if user login
+    if request.user.is_authenticated:
         return redirect('/')
     
     if request.method == 'POST':
@@ -28,7 +28,7 @@ def user_logout(request):
 
 def register_page(request):
     context = {'errors' : []}
-    if request.user.is_authenticated: # if user login
+    if request.user.is_authenticated:
         return redirect('/')
 
     if request.method == 'POST':
