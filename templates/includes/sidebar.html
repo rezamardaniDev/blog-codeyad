@@ -26,9 +26,7 @@
               {% for article in recent_articles %}
               <li>
                 <a href="{{ article.get_url }}">
-                  <h5>
-                  {{ article.title }}
-                  </h5>
+                  <h5>{{ article.title }}</h5>
                   <span>May 31, 2020</span>
                 </a>
               </li>
@@ -44,12 +42,9 @@
           </div>
           <div class="content">
             <ul>
-              <li><a href="#">- Nature Lifestyle</a></li>
-              <li><a href="#">- Awesome Layouts</a></li>
-              <li><a href="#">- Creative Ideas</a></li>
-              <li><a href="#">- Responsive Templates</a></li>
-              <li><a href="#">- HTML5 / CSS3 Templates</a></li>
-              <li><a href="#">- Creative &amp; Unique</a></li>
+              {% for category in categories %}
+                <li><a href="{% url "blog:category" category.title %}">{{ category.title }}</a></li>
+              {% endfor %}
             </ul>
           </div>
         </div>
@@ -62,12 +57,6 @@
           <div class="content">
             <ul>
               <li><a href="#">Lifestyle</a></li>
-              <li><a href="#">Creative</a></li>
-              <li><a href="#">HTML5</a></li>
-              <li><a href="#">Inspiration</a></li>
-              <li><a href="#">Motivation</a></li>
-              <li><a href="#">PSD</a></li>
-              <li><a href="#">Responsive</a></li>
             </ul>
           </div>
         </div>

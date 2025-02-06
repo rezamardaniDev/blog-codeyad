@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load render_partial %}
 
 {% block content %}
 <div class="heading-page header-text">
@@ -171,7 +172,7 @@
           </div>
         </div>
       </div>
-      {% include "includes/sidebar.html" %}
+      {% render_partial "home:sidebar_partial" %}
     </div>
   </div>
 </section>

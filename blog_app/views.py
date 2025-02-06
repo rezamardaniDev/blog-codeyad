@@ -11,3 +11,7 @@ def post_detail(request, slug):
 def all_posts(request):
     articles = Article.objects.all()
     return render(request, 'blog_app/posts_list.html', context={'articles':articles})
+
+def get_with_cat(request, cat):
+    articles = Article.objects.filter(category__title=cat)
+    return render(request, 'blog_app/posts_list.html', context={'articles':articles})

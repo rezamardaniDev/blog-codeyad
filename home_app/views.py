@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from blog_app.models import Article
+from blog_app.models import Article, Category
 # Create your views here.
 
 def home_page(request):
@@ -10,4 +10,5 @@ def home_page(request):
 
 def sidebar_view(request):
     recent_articles = Article.objects.order_by('-created')
-    return render(request, 'includes/sidebar.html', context={'recent_articles':recent_articles})
+    categories = Category.objects.all()
+    return render(request, 'includes/sidebar.html', context={'recent_articles':recent_articles, 'categories':categories})
